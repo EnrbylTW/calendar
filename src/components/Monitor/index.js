@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
-const DivWrapper = styled.div`
+const MonitorWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 700px;
+`;
+
+const DivWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 1000px;
     height: 48px;
 `;
 
@@ -81,14 +87,16 @@ const TodayWrapper = styled.button`
 `;
 
 const Monitor = ({today, prevHandler, todayHandler, nextHandler}) => (
-    <DivWrapper>
-        <div>
-            <ButtonWrapper onClick={prevHandler}>&lt;</ButtonWrapper>
-            <TextWrapper>{today.format('MMMM YYYY')}</TextWrapper>
-            <ButtonWrapper onClick={nextHandler}>&gt;</ButtonWrapper>
-            <TodayWrapper onClick={todayHandler}>Сегодня</TodayWrapper>
-        </div>
-    </DivWrapper>
+    <MonitorWrapper>
+        <DivWrapper>
+            <div>
+                <ButtonWrapper onClick={prevHandler}>&lt;</ButtonWrapper>
+                <TextWrapper>{today.format('MMMM YYYY')}</TextWrapper>
+                <ButtonWrapper onClick={nextHandler}>&gt;</ButtonWrapper>
+                <TodayWrapper onClick={todayHandler}>Сегодня</TodayWrapper>
+            </div>
+        </DivWrapper>
+    </MonitorWrapper>        
 );
 
 export default Monitor;

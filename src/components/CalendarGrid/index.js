@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+function viewDiv(){
+    document.getElementById('add').style.display = "block";
+}
+
 const DivWrapper = styled.div`
     display: flex;
     align-items: center;
@@ -23,7 +27,6 @@ const CellWrapper = styled.div`
 `;
 
 const RowHeader = styled.div`
-    width: 127px;
     height: 16px;
     display: flex;
     align-items: center;
@@ -53,7 +56,7 @@ const CalendarGrid = ({startDay}) => {
             <GirdWrapper>
                 {
                     daysMap.map((dayItem) => (
-                        <CellWrapper
+                        <CellWrapper type="button" onmousedown="viewDiv()"
                             key={
                                 dayItem.format('DDMMYYYY')
                             }
