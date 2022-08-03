@@ -1,8 +1,5 @@
 import styled from 'styled-components';
-
-function viewDiv(){
-    document.getElementById('add').style.display = "block";
-}
+import Popover from '@mui/material/Popover';
 
 const DivWrapper = styled.div`
     display: flex;
@@ -56,7 +53,7 @@ const CalendarGrid = ({startDay}) => {
             <GirdWrapper>
                 {
                     daysMap.map((dayItem) => (
-                        <CellWrapper type="button" onmousedown="viewDiv()"
+                        <CellWrapper
                             key={
                                 dayItem.format('DDMMYYYY')
                             }
