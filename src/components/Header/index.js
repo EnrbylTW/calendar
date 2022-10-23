@@ -150,7 +150,7 @@ const Header = () => (
                 </ButtonWrapper>
 
                 <AreaWrapper>
-                    <input class="searchHeader" type="search" name="event" placeholder="Placeholder" />
+                    <input className="searchHeader" type="search" name="event" placeholder="Placeholder" />
                 </AreaWrapper>
 
             </ControlWrapper>

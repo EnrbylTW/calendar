@@ -1,5 +1,7 @@
+import * as React from 'react';
 import styled from 'styled-components';
 import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
 
 const DivWrapper = styled.div`
     display: flex;
@@ -13,7 +15,6 @@ const GirdWrapper = styled.div`
     grid-template-columns: repeat(7, 143px);
     grid-template-rows: repeat(6, 120px);
 `;
-
 
 const CellWrapper = styled.div`
     height: 122px;
@@ -46,11 +47,42 @@ const RowHeader = styled.div`
 
 const CalendarGrid = ({startDay}) => {
     
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+
+
+
     const day = startDay.clone();
     const daysMap = [...Array(42)].map(() => day.add(1, 'day').clone());   
     return(
         <DivWrapper>
             <GirdWrapper>
+                        <Popover
+                            id={id}
+                            open={open}
+                            anchorEl={anchorEl}
+                            onClose={handleClose}
+                            anchorOrigin={{
+                                vertical: 'center',
+                                horizontal: 'right',
+                            }}
+                            transformOrigin={{
+                                vertical: 'center',
+                                horizontal: 'left',
+                            }}
+                        >
+                            <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                        </Popover>
                 {
                     daysMap.map((dayItem) => (
                         <CellWrapper
